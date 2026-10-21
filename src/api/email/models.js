@@ -47,7 +47,7 @@ export class MessageObject {
    * @param {string[]} [data.tags] Масив із рядків, до 100 символів у кожному. Максимум 4 рядки в масиві, рядки мають бути унікальними. Для кожного облікового запису/проєкту дозволено не більше ніж 10 000 міток, у разі перевищення метод email/send повертатиме помилку. Мітки можуть використовуватися для категоризації листів за обраними вами критеріями. Мітки передаються методами event-dump.
    * @param {number} [data.skipUnsubscribe] Пропустити чи не пропускати додавання стандартного блока з посиланням відписки до HTML-частини листа. 1=пропустити, 0=додати, за замовчуванням 0. Для использования skip_unsubscribe=1 вам надо [попросить техподдержку](https://cp.allymailer.com/ru/support) включить такую возможность.
    * @param {string} [data.globalLanguage] Заголовок для вибору мови посилання та сторінки відписки. Припустимі значення "be", "de", "en", "es", "fr", "it", "pl", "pt", "ru", "ua", "kz".
-   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
+   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
    * @param {Record<string, string>} [data.globalSubstitutions] Об'єкт для передачі глобальних підстановок (наприклад, назва компанії). Якщо назви змінних повторюються в об'єкті користувацьких підстановок "substitutions", значення змінних будуть взяті з об'єкта "substitutions". Підстановки працюють у параметрах:  - body.html - body.plaintext - body.amp - subject - from_name - options.unsubscribe_url Назви змінних можуть містити літери латинського алфавіту, цифри, символ "_". Першим символом може бути лише літера, використання пробілів не допускається.
    * @param {Record<string, string>} [data.globalMetadata] Об'єкт для передачі метаданих, спільних для всіх отримувачів, у форматі: "key": "value". Максимальна кількість ключів: 10; максимальна довжина ключа: 64 символи; максимальна довжина значення ключа: 1024 символи. Метадані передаються під час виклику [webhook](https://docs.allymailer.com.ua/ua/web-api-ref#webhook). Для групування листів в одну розсилку може використовуватися системний ключ "campaign_id" зі значенням у вигляді невід'ємного десяткового цілого до 128 біт або UUID вигляду "c7703772-453e-4c77-a9ae-9a1b94051b5a". Неправильні значення будуть прирівняні до '0'
    * @param {BodyObject} data.body Об'єкт, що містить у собі html-, plaintext- і amp-частини листа. Або html-, або plaintext-частина має бути присутня обов'язково.
@@ -105,7 +105,7 @@ export class MessageObject {
      */
     this.globalLanguage = globalLanguage;
     /**
-     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
      * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
      * @type {"simple"|"velocity"|"liquid"|"none"|undefined}
      */
@@ -330,7 +330,7 @@ export class MessageObjectRecipientsItem {
   /**
    * @param {object} [data] Fields; a nested model may be a plain object in the API format.
    * @param {string} data.email Email-адреса отримувача
-   * @param {Record<string, string>} [data.substitutions] Об'єкт, що описує підстановки для конкретного отримувача (наприклад, ім'я, товар для показу саме цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/en/template-engines)). Підстановки працюють у параметрах:  - body.html - body.plaintext - body.amp - subject - from_name - headers["List-Unsubscribe"] - options.unsubscribe_url Назви змінних можуть містити літери латинського алфавіту, цифри, символ "_". Першим символом може бути лише літера, використання пробілів не допускається. Є спеціальна змінна "to_name", що дозволяє задати ім'я отримувача. У разі підстановки туди "Ім'я Прізвище" SMTP-заголовок “To” виглядатиме як "Ім'я Прізвище <email@example.com>". Довжина змінної "to_name" обмежена 78 символами.
+   * @param {Record<string, string>} [data.substitutions] Об'єкт, що описує підстановки для конкретного отримувача (наприклад, ім'я, товар для показу саме цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/ua/template-engines)). Підстановки працюють у параметрах:  - body.html - body.plaintext - body.amp - subject - from_name - headers["List-Unsubscribe"] - options.unsubscribe_url Назви змінних можуть містити літери латинського алфавіту, цифри, символ "_". Першим символом може бути лише літера, використання пробілів не допускається. Є спеціальна змінна "to_name", що дозволяє задати ім'я отримувача. У разі підстановки туди "Ім'я Прізвище" SMTP-заголовок “To” виглядатиме як "Ім'я Прізвище <email@example.com>". Довжина змінної "to_name" обмежена 78 символами.
    * @param {Record<string, string>} [data.metadata] Об'єкт для передачі метаданих, специфічних для окремого отримувача, де "key" — рядок до 64 символів завдовжки, "value" — рядок до 1024 символів завдовжки, максимальна кількість ключів — 10. Метадані передаються під час виклику [webhook](https://docs.allymailer.com.ua/ua/web-api-ref#webhook) і методів [event-dump](https://docs.allymailer.com.ua/ua/web-api-ref#event-dump). Для групування листів в одну розсилку може використовуватися системний ключ "campaign_id" зі значенням у вигляді невід'ємного десяткового цілого або UUID до 128 біт.
    */
   constructor({ email, substitutions, metadata } = {}) {
@@ -341,7 +341,7 @@ export class MessageObjectRecipientsItem {
     this.email = email;
     /**
      * Об'єкт, що описує підстановки для конкретного отримувача (наприклад, ім'я, товар для показу саме
-     * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/en/template-engines)).
+     * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/ua/template-engines)).
      * Підстановки працюють у параметрах:
      *
      * - body.html
@@ -381,6 +381,35 @@ export class MessageObjectRecipientsItem {
       substitutions: data["substitutions"],
       metadata: data["metadata"],
     });
+  }
+
+  /**
+   * A recipient from "email" or "Name <email>": the name goes to the to_name substitution (the name in the
+   * "To" header).
+   * @param {string} address
+   * @param {Record<string, string>} [substitutions] More substitutions of the recipient.
+   * @returns {MessageObjectRecipientsItem}
+   */
+  static fromAddress(address, substitutions) {
+    let email = String(address).trim();
+    let name = "";
+    const match = /^(.*)<([^>]+)>$/s.exec(email);
+    if (match) {
+      email = match[2].trim();
+      name = match[1].trim().replace(/^"|"$/g, "");
+    }
+    const subs = name ? { to_name: name, ...substitutions } : substitutions;
+    return new MessageObjectRecipientsItem({ email: email, substitutions: subs });
+  }
+
+  /**
+   * Sets the metadata of the recipient (returned in its webhook events) and returns the recipient.
+   * @param {Record<string, string>} metadata
+   * @returns {this}
+   */
+  withMetadata(metadata) {
+    this.metadata = metadata;
+    return this;
   }
 
   /**

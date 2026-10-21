@@ -54,7 +54,7 @@ export class TemplateObject {
    * @param {string} [data.id] Унікальний ідентифікатор шаблону. Якщо вказано, система спробує знайти шаблон із указаним id і відредагувати його. Якщо не задано, буде створено новий шаблон.
    * @param {string} data.name Назва шаблону.
    * @param {"html"|"visual"} [data.editorType] Тип редактора шаблону у вебінтерфейсі, "html" або "visual". За замовчуванням — "html". Створення шаблонів із типом редактора "visual" можливе лише через вебінтерфейс.
-   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
+   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
    * @param {Record<string, string>} [data.globalSubstitutions] Об'єкт для передачі глобальних підстановок (наприклад, назва компанії). Якщо назви змінних повторюються в об'єкті користувацьких підстановок "substitutions", значення змінних будуть взяті з об'єкта "substitutions". Підстановки працюють у параметрах:  - body.html - body.plaintext - body.amp - subject - from_name - options.unsubscribe_url Назви змінних можуть містити літери латинського алфавіту, цифри, символ "_". Першим символом може бути лише літера, використання пробілів не допускається.
    * @param {Record<string, string>} [data.globalMetadata] Об'єкт для передачі метаданих, спільних для всіх отримувачів, у форматі: "key": "value". Максимальна кількість ключів: 10; максимальна довжина ключа: 64 символи; максимальна довжина значення ключа: 1024 символи. Метадані передаються під час виклику [webhook](https://docs.allymailer.com.ua/ua/web-api-ref#webhook). Для групування листів в одну розсилку може використовуватися системний ключ "campaign_id" зі значенням у вигляді невід'ємного десяткового цілого до 128 біт або UUID вигляду "c7703772-453e-4c77-a9ae-9a1b94051b5a". Неправильні значення будуть прирівняні до '0'
    * @param {BodyObject} [data.body] Об'єкт, що містить у собі html-, plaintext- і amp-частини листа. Або html-, або plaintext-частина має бути присутня обов'язково.
@@ -88,7 +88,7 @@ export class TemplateObject {
      */
     this.editorType = editorType;
     /**
-     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
      * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
      * @type {"simple"|"velocity"|"liquid"|"none"|undefined}
      */
@@ -470,7 +470,7 @@ export class TemplateListObject {
    * @param {string} [data.id] Унікальний ідентифікатор шаблону.
    * @param {string} [data.name] Назва шаблону.
    * @param {"html"|"visual"} [data.editorType] Тип редактора шаблону у вебінтерфейсі, "html" або "visual". За замовчуванням — "html". Створення шаблонів із типом редактора "visual" можливе лише через вебінтерфейс.
-   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
+   * @param {"simple"|"velocity"|"liquid"|"none"} [data.templateEngine] Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
    * @param {Record<string, string>} [data.globalSubstitutions] Об'єкт для передачі глобальних підстановок (наприклад, назва компанії). Якщо назви змінних повторюються в об'єкті користувацьких підстановок "substitutions", значення змінних будуть взяті з об'єкта "substitutions". Підстановки працюють у параметрах:  - body.html - body.plaintext - body.amp - subject - from_name - options.unsubscribe_url Назви змінних можуть містити літери латинського алфавіту, цифри, символ "_". Першим символом може бути лише літера, використання пробілів не допускається.
    * @param {Record<string, string>} [data.globalMetadata] Об'єкт для передачі метаданих, спільних для всіх отримувачів, у форматі: "key": "value". Максимальна кількість ключів: 10; максимальна довжина ключа: 64 символи; максимальна довжина значення ключа: 1024 символи. Метадані передаються під час виклику [webhook](https://docs.allymailer.com.ua/ua/web-api-ref#webhook). Для групування листів в одну розсилку може використовуватися системний ключ "campaign_id" зі значенням у вигляді невід'ємного десяткового цілого до 128 біт або UUID вигляду "c7703772-453e-4c77-a9ae-9a1b94051b5a". Неправильні значення будуть прирівняні до '0'
    * @param {BodyObject} [data.body] Об'єкт, що містить у собі html-, plaintext- і amp-частини листа. Або html-, або plaintext-частина має бути присутня обов'язково.
@@ -507,7 +507,7 @@ export class TemplateListObject {
      */
     this.editorType = editorType;
     /**
-     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+     * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
      * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
      * @type {"simple"|"velocity"|"liquid"|"none"|undefined}
      */
