@@ -1,7 +1,7 @@
 // Types of the models of the Common section.
 
 /**
- * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+ * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
  * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
  */
 export declare const TemplateEngine: Readonly<{
@@ -11,7 +11,7 @@ export declare const TemplateEngine: Readonly<{
   NONE: "none";
 }>;
 /**
- * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+ * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
  * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
  */
 export type TemplateEngine = "simple" | "velocity" | "liquid" | "none";
@@ -104,6 +104,10 @@ export declare class BodyObject {
   amp?: string;
   /** Builds the object from decoded JSON. */
   static fromJSON(data: Record<string, any>): BodyObject;
+  /** An HTML body, with an optional plain-text part. */
+  static html(html: string, plaintext?: string): BodyObject;
+  /** A plain-text body. */
+  static text(plaintext: string): BodyObject;
   /** JSON-ready object in the API format, empty fields are omitted. */
   toJSON(): BodyObjectJSON;
 }

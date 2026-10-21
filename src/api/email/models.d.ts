@@ -83,7 +83,7 @@ export interface MessageObjectInit {
    */
   globalLanguage?: string;
   /**
-   * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+   * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
    * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
    */
   templateEngine?: TemplateEngine;
@@ -233,7 +233,7 @@ export declare class MessageObject {
    */
   globalLanguage?: string;
   /**
-   * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+   * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
    * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
    */
   templateEngine?: TemplateEngine;
@@ -368,7 +368,7 @@ export interface MessageObjectRecipientsItemInit {
   email: string;
   /**
    * Об'єкт, що описує підстановки для конкретного отримувача (наприклад, ім'я, товар для показу саме
-   * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/en/template-engines)).
+   * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/ua/template-engines)).
    * Підстановки працюють у параметрах:
    *
    * - body.html
@@ -402,7 +402,7 @@ export declare class MessageObjectRecipientsItem {
   email: string;
   /**
    * Об'єкт, що описує підстановки для конкретного отримувача (наприклад, ім'я, товар для показу саме
-   * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/en/template-engines)).
+   * цьому отримувачу — див. [Шаблонізатори](https://docs.allymailer.com.ua/ua/template-engines)).
    * Підстановки працюють у параметрах:
    *
    * - body.html
@@ -429,6 +429,10 @@ export declare class MessageObjectRecipientsItem {
   metadata?: Record<string, string>;
   /** Builds the object from decoded JSON. */
   static fromJSON(data: Record<string, any>): MessageObjectRecipientsItem;
+  /** A recipient from "email" or "Name <email>": the name goes to the to_name substitution. */
+  static fromAddress(address: string, substitutions?: Record<string, string>): MessageObjectRecipientsItem;
+  /** Sets the metadata of the recipient (returned in its webhook events) and returns the recipient. */
+  withMetadata(metadata: Record<string, string>): this;
   /** JSON-ready object in the API format, empty fields are omitted. */
   toJSON(): MessageObjectRecipientsItemJSON;
 }

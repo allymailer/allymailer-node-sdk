@@ -2,7 +2,7 @@
 import { compact, extraFields, toModel, toPlain } from "../client/ApiClient.js";
 
 /**
- * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/en/template-engines) — або
+ * Параметр для вибору [шаблонізатора](https://docs.allymailer.com.ua/ua/template-engines) — або
  * "simple", або "velocity", або "liquid", або "none". За замовчуванням — "simple".
  */
 export const TemplateEngine = Object.freeze({
@@ -88,6 +88,25 @@ export class BodyObject {
       plaintext: data["plaintext"],
       amp: data["amp"],
     });
+  }
+
+  /**
+   * An HTML body, with an optional plain-text part.
+   * @param {string} html
+   * @param {string} [plaintext]
+   * @returns {BodyObject}
+   */
+  static html(html, plaintext) {
+    return new BodyObject({ html: html, plaintext: plaintext });
+  }
+
+  /**
+   * A plain-text body.
+   * @param {string} plaintext
+   * @returns {BodyObject}
+   */
+  static text(plaintext) {
+    return new BodyObject({ plaintext: plaintext });
   }
 
   /**
